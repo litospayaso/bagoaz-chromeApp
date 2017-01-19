@@ -45,13 +45,6 @@ angular.module("starter")
 
       if(ariketak.length==0){
         $scope.zorionak="Zorionak!!! Has completado correctamente la lección.";
-
-        var cookie = [];
-        if (JSON.parse(localStorage.getItem("cookie"))){
-          cookie = JSON.parse(localStorage.getItem("cookie"));
-        }
-        cookie.push(level+1);
-        localStorage.setItem("cookie", JSON.stringify(cookie));
         return 0;
       }
       orain = ariketak.pop();
@@ -98,4 +91,13 @@ angular.module("starter")
       return false;
     };
 
-  }]);
+  }])
+
+  .config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+      // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
+    }
+  ]);

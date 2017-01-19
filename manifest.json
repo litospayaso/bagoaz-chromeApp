@@ -1,0 +1,18 @@
+{
+  "name": "Bagoaz",
+  "description": "Aprende euskera de manera interactiva.",
+  "manifest_version": 2,
+//  "minimum_chrome_version": "23",
+  "version": "1.2",
+//  "offline_enabled": true,
+  "homepage_url": "www/index.html",
+  "app": {
+    "background": {
+      "scripts": ["www/js/app.js"]
+    }
+  }
+//  "icons": {
+//    "16": "assets/icon-128x128.png",
+//    "128": "assets/icon-128x128.png"
+//  }
+}

@@ -105,33 +105,12 @@ angular.module("starter")
       $rootScope.gaiak = data.data.gaiak;
       $rootScope.ariketak = data.data.ariketak;
       // $rootScope.lexiko = data.data.lexiko;
-      localStorage.setItem("databaseCookie", JSON.stringify(data));
+      chrome.storage.local.set("databaseCookie", JSON.stringify(data));
     }, function errorCallback(response) { //Error case not connection available
-      if (JSON.parse(localStorage.getItem("databaseCookie")) != null){
-        var databaseCookie = [];
-        databaseCookie = JSON.parse(localStorage.getItem("databaseCookie"));
-        $rootScope.gaiak = databaseCookie.data.gaiak;
-        $rootScope.ariketak = databaseCookie.data.ariketak;
-        // $rootScope.lexiko = databaseCookie.data.lexiko;
-      }else{
-        $http.get('database/bagoaz-export.json').success(function (data) {
-          $rootScope.gaiak = data.gaiak;
-          $rootScope.ariketak = data.ariketak;
-          // $rootScope.lexiko = data.lexiko;
-        });
-      }
     });
 
     $scope.colorButton = function (index){
-      var cookie = [];
-      if (JSON.parse(localStorage.getItem("cookie")) != null){
-        cookie = JSON.parse(localStorage.getItem("cookie"));
-      }
-      if (cookie.indexOf(index) > -1){
-        return "button button-block button-stable"
-      }else{
         return "button button-block button-positive"
-      }
     };
   }]);
 
